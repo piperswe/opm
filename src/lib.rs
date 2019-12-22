@@ -1,4 +1,6 @@
+mod opm_029;
 mod utils;
+mod punch_card;
 
 use wasm_bindgen::prelude::*;
 
@@ -15,5 +17,8 @@ extern {
 
 #[wasm_bindgen]
 pub fn greet() {
-    alert("Hello, opm!");
+    let mut card = punch_card::PunchCard::default();
+    let opm = opm_029::OPM029::new();
+    opm.punch_str("HELLO WORLD", &mut card, 0);
+    alert(&format!("{}", card.0[0]));
 }

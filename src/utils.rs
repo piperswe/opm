@@ -8,3 +8,11 @@ pub fn set_panic_hook() {
     #[cfg(feature = "console_error_panic_hook")]
     console_error_panic_hook::set_once();
 }
+
+pub fn bit(idx: u8) -> u16 {
+  1 << idx
+}
+
+pub fn bits(idxs: Vec<u8>) -> u16 {
+  idxs.iter().map(|x| bit(*x)).fold(0, |a, b| a | b)
+}

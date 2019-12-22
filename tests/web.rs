@@ -4,6 +4,7 @@
 
 extern crate wasm_bindgen_test;
 use wasm_bindgen_test::*;
+use super::*;
 
 wasm_bindgen_test_configure!(run_in_browser);
 

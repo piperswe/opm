@@ -1,69 +1,45 @@
-<div align="center">
+# Online Play Machines
 
-  <h1><code>wasm-pack-template</code></h1>
+This is a collection of ~~international~~ online machines for ~~business~~ play
+use, written in Rust.
 
-  <strong>A template for kick starting a Rust and WebAssembly project using <a href="https://github.com/rustwasm/wasm-pack">wasm-pack</a>.</strong>
+## Machines
 
-  <p>
-    <a href="https://travis-ci.org/rustwasm/wasm-pack-template"><img src="https://img.shields.io/travis/rustwasm/wasm-pack-template.svg?style=flat-square" alt="Build Status" /></a>
-  </p>
+### OPM 029 Card Punch
 
-  <h3>
-    <a href="https://rustwasm.github.io/docs/wasm-pack/tutorials/npm-browser-packages/index.html">Tutorial</a>
-    <span> | </span>
-    <a href="https://discordapp.com/channels/442252698964721669/443151097398296587">Chat</a>
-  </h3>
+_Based on the IBM 029_
 
-  <sub>Built with 🦀🕸 by <a href="https://rustwasm.github.io/">The Rust and WebAssembly Working Group</a></sub>
-</div>
+The OPM 029 allows one to punch alphanumeric data on an OPM punch card.
 
-## About
+_Status: Planned_
 
-[**📚 Read this template tutorial! 📚**][template-docs]
+### OPM 084 Sorter
 
-This template is designed for compiling Rust libraries into WebAssembly and
-publishing the resulting package to NPM.
+_Based on the IBM 084_
 
-Be sure to check out [other `wasm-pack` tutorials online][tutorials] for other
-templates and usages of `wasm-pack`.
+The OPM 084 partitions a stack of OPM punch cards by the number stored in a
+given character position on each punch card. For example, if character 1 on each
+punch card stored a digit (0-9), the OPM 084 would place every card with a 0 in
+bin 0, every card with a 1 in bin 1, and so on.
 
-[tutorials]: https://rustwasm.github.io/docs/wasm-pack/tutorials/index.html
-[template-docs]: https://rustwasm.github.io/docs/wasm-pack/tutorials/npm-browser-packages/index.html
+_Status: Planned_
 
-## 🚴 Usage
+### OPM 1401 Data Processing System
 
-### 🐑 Use `cargo generate` to Clone this Template
+#### OPM 1401 Processing Unit
 
-[Learn more about `cargo generate` here.](https://github.com/ashleygwilliams/cargo-generate)
+_Based on the IBM 1401_
 
-```
-cargo generate --git https://github.com/rustwasm/wasm-pack-template.git --name my-project
-cd my-project
-```
+_Status: Planned_
 
-### 🛠️ Build with `wasm-pack build`
+#### OPM 1402 Card Read-Punch
 
-```
-wasm-pack build
-```
+_Based on the IBM 1402_
 
-### 🔬 Test in Headless Browsers with `wasm-pack test`
+_Status: Planned_
 
-```
-wasm-pack test --headless --firefox
-```
+#### OPM 1403 Printer
 
-### 🎁 Publish to NPM with `wasm-pack publish`
+_Based on the IBM 1403_
 
-```
-wasm-pack publish
-```
-
-## 🔋 Batteries Included
-
-* [`wasm-bindgen`](https://github.com/rustwasm/wasm-bindgen) for communicating
-  between WebAssembly and JavaScript.
-* [`console_error_panic_hook`](https://github.com/rustwasm/console_error_panic_hook)
-  for logging panic messages to the developer console.
-* [`wee_alloc`](https://github.com/rustwasm/wee_alloc), an allocator optimized
-  for small code size.
+_Status: Planned_
