@@ -1,10 +1,16 @@
 use std::collections::HashMap;
 
 #[derive(Copy, Clone)]
-pub struct PunchCard(pub [u16; 80]);
+pub struct PunchCard {
+  pub characters: [u16; 80]
+}
 
 impl Default for PunchCard {
-  fn default() -> Self { PunchCard([0; 80]) }
+  fn default() -> Self {
+    PunchCard {
+      characters: [0; 80]
+    }
+  }
 }
 
 pub struct Charset {
@@ -29,8 +35,8 @@ impl Charset {
     self.to_charset_map.get(&ascii).cloned()
   }
 
-  pub fn to_string(&self, card: PunchCard) -> String {
-    card.0.into_iter()
+  pub fn to_string(&self, card: &PunchCard) -> String {
+    card.characters.into_iter()
       .map(|x| self.to_ascii(*x))
       .map(|x| x.unwrap_or(' '))
       .collect()
