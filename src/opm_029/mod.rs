@@ -10,6 +10,17 @@ pub struct OPM029 {
   location: usize,
 }
 
+trait MapMut<T> {
+  fn map_mut<U, F: FnOnce(T) -> U>(&self, f: F) -> Option<U>;
+}
+
+impl<T> MapMut<T> for Option<T>
+  where T: Clone {
+    fn map_mut<U, F: FnOnce(T) -> U>(&self, f: F) -> Option<U> {
+      self.as_ref().cloned().map(f)
+    }
+}
+
 impl OPM029 {
   pub fn new() -> OPM029 {
     OPM029 {
@@ -24,9 +35,7 @@ impl OPM029 {
   }
 
   pub fn eject_card(&mut self) -> Option<PunchCard> {
-    let card = self.card;
-    self.card = None;
-    card
+    std::mem::replace(&mut self.card, None)
   }
 
   pub fn reset(&mut self) {
@@ -34,12 +43,19 @@ impl OPM029 {
   }
 
   pub fn punch(&mut self, value: char) {
-    self.card.map(|mut card| {
-      self.charset.from_ascii(value).map(|x| {
+    let result = self.charset.from_ascii(value).and_then(|x| {
+      self.card.map_mut(|mut card| {
         card.characters[self.location] = x;
-        self.location = self.location + 1;
-      });
+        card
+      })
     });
+    match result {
+      Some(card) => {
+        self.card = Some(card);
+        self.location += 1;
+      }
+      None => {}
+    }
   }
 
   pub fn punch_str(&mut self, value: &str) {

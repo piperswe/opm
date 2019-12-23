@@ -6,9 +6,9 @@ fn punches_correctly() {
   let mut opm = OPM029::new();
   opm.insert_card(PunchCard::default());
   opm.punch_str("0123ABCD");
-  let card_options = opm.eject_card();
-  assert!(card_options.is_some());
-  let card = card_options.unwrap();
+  let card_option = opm.eject_card();
+  assert!(card_option.is_some());
+  let card = card_option.unwrap();
   assert_eq!(card.characters[0], 1 << 0);
   assert_eq!(card.characters[1], 1 << 1);
   assert_eq!(card.characters[2], 1 << 2);
@@ -24,8 +24,9 @@ fn punches_correctly() {
   opm.insert_card(card);
   opm.reset();
   opm.punch_str("PIPER MCCORKLE");
-  assert!(card_options.is_some());
-  let card = card_options.unwrap();
+  let card_option = opm.eject_card();
+  assert!(card_option.is_some());
+  let card = card_option.unwrap();
   assert_eq!(card.characters[0], 1 << 11 | 1 << 7);
   assert_eq!(card.characters[1], 1 << 12 | 1 << 9);
   assert_eq!(card.characters[2], 1 << 11 | 1 << 7);

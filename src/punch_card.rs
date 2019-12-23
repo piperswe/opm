@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 
-#[derive(Copy, Clone)]
+#[derive(Clone)]
 pub struct PunchCard {
   pub characters: [u16; 80]
 }
@@ -13,6 +13,7 @@ impl Default for PunchCard {
   }
 }
 
+#[derive(Clone)]
 pub struct Charset {
   to_ascii_map: HashMap<u16, char>,
   to_charset_map: HashMap<char, u16>
